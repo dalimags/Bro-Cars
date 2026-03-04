@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Our Vehicles | BRO CARS</title>
+  <meta name="description" content="Browse our complete collection of premium pre-owned cars in Sri Lanka."/>
+  <style>
+   
+  
+    /* ============================== CARS SECTION ============================== */
+    .cars-section {
+      background: var(--dark);
+      padding: 100px 5%;
+    }
+
+    .cars-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 28px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .car-card {
+      background: var(--dark-2);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: var(--border-subtle);
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .car-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(192, 192, 192, 0.18);
+    }
+
+    .car-card-img {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background: var(--dark-3);
+    }
+
+    .car-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .car-card:hover .car-card-img img {
+      transform: scale(1.06);
+    }
+
+    .car-card-img-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--dark-3), var(--dark-4));
+      font-size: 72px;
+    }
+
+    .car-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: var(--gradient-chrome-btn);
+      color: var(--black);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .car-info {
+      padding: 20px 22px 22px;
+    }
+
+    .car-year-tag {
+      font-size: 11px;
+      color: var(--chrome-dark);
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    .car-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 19px;
+      font-weight: 700;
+      color: var(--white-pure);
+      margin-bottom: 10px;
+    }
+
+    .car-price {
+      font-family: 'Poppins', sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      background: var(--gradient-chrome);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 14px;
+    }
+
+    .car-specs {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+
+    .spec-tag {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(192, 192, 192, 0.1);
+      border-radius: 20px;
+      font-size: 11px;
+      color: var(--chrome-mid);
+      font-weight: 500;
+    }
+
+    .car-card-btn {
+      width: 100%;
+      padding: 12px;
+      background: transparent;
+      border: 1px solid rgba(192, 192, 192, 0.22);
+      color: var(--chrome-bright);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .car-card-btn:hover {
+      background: var(--gradient-chrome-btn);
+      color: var(--black);
+      border-color: transparent;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(192, 192, 192, 0.2);
+    }
+
+    /* ============================== MODAL ============================== */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(10px);
+      z-index: 3000;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.3s ease;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-box {
+      background: var(--dark-2);
+      border: var(--border-chrome);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 750px;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      transform: scale(0.85);
+      transition: 0.3s ease;
+    }
+
+    .modal-overlay.open .modal-box {
+      transform: scale(1);
+    }
+
+    .modal-img {
+      height: 260px;
+      overflow: hidden;
+      background: var(--dark-3);
+      border-radius: 16px 16px 0 0;
+    }
+
+    .modal-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .modal-img-fallback {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 100px;
+      background: linear-gradient(135deg, var(--dark-3), var(--dark-4));
+    }
+
+    .modal-body {
+      padding: 32px;
+      position: relative;
+      text-align: center;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(192, 192, 192, 0.2);
+      border-radius: 50%;
+      color: var(--chrome-mid);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      z-index: 10;
+    }
+
+    .modal-close:hover {
+      background: rgba(192, 192, 192, 0.2);
+      color: var(--white-pure);
+    }
+
+    .modal-car-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--white-pure);
+      margin-bottom: 6px;
+    }
+
+    .modal-car-price {
+      font-family: 'Poppins', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      background: var(--gradient-chrome);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 20px;
+    }
+
+    .modal-specs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 22px;
+      text-align: left;
+      justify-content: center;
+    }
+
+    .modal-spec-item {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(192, 192, 192, 0.1);
+      border-radius: 8px;
+      padding: 12px 16px;
+      text-align: left;
+    }
+
+    .modal-spec-label {
+      font-size: 10px;
+      color: var(--chrome-dark);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .modal-spec-value {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      color: var(--white-pure);
+      font-size: 14px;
+    }
+
+    .modal-desc {
+      font-size: 14px;
+      color: var(--chrome-dark);
+      line-height: 1.8;
+      margin-bottom: 22px;
+      padding: 14px 16px;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      max-width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .modal-btns {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    
+    /* ============================== ANIMATIONS ============================== */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .animate-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .animate-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+  </style>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+
+
+<!-- ===== FIXED NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-img-wrap">
+<img src="logo1.png" alt="Bro Cars UK Car Sales Logo" style="height: 150px; width: auto; margin-top: 32%;">
+    </div>
+
+  </a>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+     <a href="vehicles.html">Vehicles</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="nav-cta">Sell Your Car</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile Navigation -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="services.html">Services</a>
+  <a href="vehicles.html">Vehicles</a>
+  <a href="contact.html">Contact</a>
+  <a href="contact.html" class="nav-cta">Sell Your Car</a>
+</div>
+
+<!-- ===== PAGE HERO ===== -->
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> <span>/</span> <span>Our Vehicles</span>
+    </div>
+    <h1>Our <span>Vehicles</span></h1>
+    <p>Explore our extensive collection of premium, inspected cars. Find the perfect match for your drive.</p>
+  </div>
+</section>
+
+<!-- ===== CARS GRID ===== -->
+<section class="cars-section">
+  <div class="cars-grid" id="carsGrid"></div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="footer-grid">
+    <!-- Brand Column -->
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-img-wrap">
+          <img src="logo1.png" alt="BRO CARS"/>
+        </div>
+      </a>
+      
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About Us</a>
+        <a href="services.html">Services</a>
+        <a href="#cars">Browse Cars</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+
+    <!-- Services -->
+    <div class="footer-col">
+      <h4>Services</h4>
+      <div class="footer-links">
+        <a href="services.html">Buy a Car</a>
+        <a href="services.html">Sell Your Car</a>
+        <a href="services.html">Car Inspection</a>
+        <a href="services.html">Documentation</a>
+        <a href="services.html">Customer Support</a>
+      </div>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-col">
+      <h4>Contact Info</h4>
+      <div class="footer-contact-item">
+        <span>📍</span>
+        <span>No. 45, Galle Road, Dehiwala, Western Province, Sri Lanka</span>
+      </div>
+      <div class="footer-contact-item">
+        <span>📞</span>
+        <span>+94 77 123 4567</span>
+      </div>
+      <div class="footer-contact-item">
+        <span>✉️</span>
+        <span>info@brocars.lk</span>
+      </div>
+      <div class="footer-contact-item">
+        <span>🕐</span>
+        <span>Mon–Sat: 9:00 AM – 7:00 PM</span>
+      </div>
+    </div>
+  </div>
+
+  
+</footer>
+
+
+<!-- ===== MODAL (for car details) ===== -->
+<div class="modal-overlay" id="carModal">
+  <div class="modal-box">
+    <div class="modal-img" id="modalImgWrap"></div>
+    <div class="modal-body">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="car-year-tag" id="modalYear"></div>
+      <div class="modal-car-name" id="modalName"></div>
+      <div class="modal-car-price" id="modalPrice"></div>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-specs-grid" id="modalSpecs"></div>
+      <div class="modal-btns">
+        <a href="contact.html" class="btn btn-primary">Inquire Now</a>
+        <button class="btn btn-ghost" id="modalCloseBtn">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ==================== CAR DATA ====================
+  const cars = [
+    {
+      name: "Toyota Aqua G",
+      year: 2020,
+      price: "Rs. 6,500,000",
+      fuel: "Hybrid",
+      transmission: "CVT Auto",
+      mileage: "42,000 km",
+      engine: "1.5L Hybrid",
+      color: "Pearl White",
+      condition: "Excellent",
+      badge: "Hot Deal",
+      desc: "Well-maintained single-owner hybrid hatchback with outstanding fuel economy. Full service history available. Perfect for city commuting.",
+      img: "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600&q=75"
+    },
+    {
+      name: "Honda Vezel RS",
+      year: 2019,
+      price: "Rs. 9,200,000",
+      fuel: "Hybrid",
+      transmission: "7-Speed DCT",
+      mileage: "55,000 km",
+      engine: "1.5L i-VTEC",
+      color: "Premium Black Pearl",
+      condition: "Excellent",
+      badge: "Premium",
+      desc: "Sporty RS trim with full leather seats, push-start ignition, and advanced Honda Sensing safety systems. One of the finest crossovers in its class.",
+      img: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=75"
+    },
+    {
+      name: "Suzuki Alto Turbo RS",
+      year: 2021,
+      price: "Rs. 4,100,000",
+      fuel: "Petrol Turbo",
+      transmission: "5-Speed Manual",
+      mileage: "18,000 km",
+      engine: "660cc Turbo",
+      color: "Racing Red",
+      condition: "Like New",
+      badge: "New Arrival",
+      desc: "Low mileage sporty kei car with turbocharged engine and bucket sports seats. Fun to drive and incredibly fuel efficient for daily use.",
+      img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=75"
+    },
+    {
+      name: "Nissan X-Trail 4WD",
+      year: 2018,
+      price: "Rs. 12,500,000",
+      fuel: "Petrol",
+      transmission: "CVT Auto",
+      mileage: "78,000 km",
+      engine: "2.0L MR20",
+      color: "Arctic White",
+      condition: "Very Good",
+      badge: "Popular",
+      desc: "7-seater family SUV with full 4WD capability. Equipped with panoramic sunroof, 360-degree camera, and third-row seating for the whole family.",
+      img: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&q=75"
+    },
+    {
+      name: "Toyota Prius Alpha",
+      year: 2017,
+      price: "Rs. 8,800,000",
+      fuel: "Hybrid",
+      transmission: "CVT Auto",
+      mileage: "88,000 km",
+      engine: "1.8L Hybrid",
+      color: "Graphite Grey",
+      condition: "Good",
+      badge: "Best Value",
+      desc: "Spacious 7-seater hybrid wagon with exceptional fuel efficiency. Plenty of cabin space, smart entry system, and comfortable ride for families.",
+      img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=75"
+    },
+    {
+      name: "BMW 3 Series 320i",
+      year: 2016,
+      price: "Rs. 16,900,000",
+      fuel: "Petrol",
+      transmission: "8-Speed Auto",
+      mileage: "95,000 km",
+      engine: "2.0L TwinPower Turbo",
+      color: "Mineral Grey Metallic",
+      condition: "Good",
+      badge: "Luxury",
+      desc: "Iconic German sports sedan with precise dynamics and a premium cabin. iDrive infotainment, full leather interior, and the thrill of BMW engineering.",
+      img: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&q=75"
+    },
+    {
+      name: "Mitsubishi Pajero Sport",
+      year: 2019,
+      price: "Rs. 14,200,000",
+      fuel: "Diesel",
+      transmission: "8-Speed Auto",
+      mileage: "62,000 km",
+      engine: "2.4L Di-D",
+      color: "White Pearl",
+      condition: "Very Good",
+      badge: "4x4",
+      desc: "Powerful 7-seater SUV with 4x4 capability. Perfect for family adventures and off-road trips. Well maintained with complete service records.",
+      img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&q=75"
+    },
+    {
+      name: "Mercedes-Benz C200",
+      year: 2018,
+      price: "Rs. 18,500,000",
+      fuel: "Petrol",
+      transmission: "9G-Tronic",
+      mileage: "48,000 km",
+      engine: "2.0L Turbo",
+      color: "Black",
+      condition: "Excellent",
+      badge: "Executive",
+      desc: "Elegant luxury sedan with AMG line package, panoramic roof, and premium Burmester sound system. A true executive choice.",
+      img: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d1?w=600&q=75"
+    }
+  ];
+
+  // ==================== RENDER FUNCTION ====================
+  function renderCars(containerId, limit = null) {
+    const grid = document.getElementById(containerId);
+    if (!grid) return;
+
+    grid.innerHTML = '';
+
+    const carsToShow = limit ? cars.slice(0, limit) : cars;
+
+    carsToShow.forEach((car, idx) => {
+      // Find global index for modal
+      const globalIndex = cars.findIndex(c => c.name === car.name && c.year === car.year);
+
+      const card = document.createElement('div');
+      card.className = 'car-card animate-up';
+      card.innerHTML = `
+        <div class="car-card-img">
+          <img src="${car.img}" alt="${car.name}" loading="lazy"
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="car-card-img-fallback" style="display:none;">🚗</div>
+          <span class="car-badge">${car.badge}</span>
+        </div>
+        <div class="car-info">
+          <div class="car-year-tag">${car.year} Model</div>
+          <div class="car-name">${car.name}</div>
+          <div class="car-price">${car.price}</div>
+          <div class="car-specs">
+            <span class="spec-tag">⛽ ${car.fuel}</span>
+            <span class="spec-tag">⚙️ ${car.transmission}</span>
+            <span class="spec-tag">📏 ${car.mileage}</span>
+          </div>
+          <button class="car-card-btn" onclick="openModal(${globalIndex})">View Details</button>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
+
+  // ==================== MODAL FUNCTIONS ====================
+  function openModal(index) {
+    const car = cars[index];
+    const modal = document.getElementById('carModal');
+    if (!modal) return;
+
+    document.getElementById('modalImgWrap').innerHTML = `
+      <img src="${car.img}" alt="${car.name}"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+      <div class="modal-img-fallback" style="display:none;">🚗</div>
+    `;
+
+    document.getElementById('modalYear').textContent = car.year + ' Model';
+    document.getElementById('modalName').textContent = car.name;
+    document.getElementById('modalPrice').textContent = car.price;
+    document.getElementById('modalDesc').textContent = car.desc;
+
+    const specsHTML = `
+      <div class="modal-spec-item"><div class="modal-spec-label">Fuel Type</div><div class="modal-spec-value">${car.fuel}</div></div>
+      <div class="modal-spec-item"><div class="modal-spec-label">Transmission</div><div class="modal-spec-value">${car.transmission}</div></div>
+      <div class="modal-spec-item"><div class="modal-spec-label">Mileage</div><div class="modal-spec-value">${car.mileage}</div></div>
+      <div class="modal-spec-item"><div class="modal-spec-label">Engine</div><div class="modal-spec-value">${car.engine}</div></div>
+      <div class="modal-spec-item"><div class="modal-spec-label">Colour</div><div class="modal-spec-value">${car.color}</div></div>
+      <div class="modal-spec-item"><div class="modal-spec-label">Condition</div><div class="modal-spec-value">${car.condition}</div></div>
+    `;
+    document.getElementById('modalSpecs').innerHTML = specsHTML;
+
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    const modal = document.getElementById('carModal');
+    if (modal) {
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  }
+
+  // ==================== EVENT LISTENERS ====================
+  document.addEventListener('DOMContentLoaded', function() {
+    // Render all cars on this page (vehicles.html)
+    renderCars('carsGrid'); // no limit → show all
+
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+      window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 50);
+      });
+    }
+
+    // Hamburger menu
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        mobileNav.classList.toggle('open');
+      });
+    }
+
+    // Modal close buttons
+    const modalClose = document.getElementById('modalClose');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const modalOverlay = document.getElementById('carModal');
+
+    if (modalClose) modalClose.addEventListener('click', closeModal);
+    if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
+    if (modalOverlay) {
+      modalOverlay.addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+      });
+    }
+
+    // Scroll animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.animate-up').forEach(el => observer.observe(el));
+  });
+</script>
+</body>
+</html>

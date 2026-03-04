@@ -100,16 +100,16 @@ ul {
   align-items: center;
   justify-content: space-between;
   height: 68px;
-  background: #160a71;
+  background: #4e4e5d;
   border-bottom: 1px solid rgba(192, 192, 192, 0.12);
   transition: var(--transition);
 }
 
 .navbar.scrolled {
   height: 56px;
-  background: #160a71;
+  background: #4e4e5d;
   box-shadow: 0 4px 32px rgba(0, 0, 0, 0.7);
-  border-bottom-color: rgba(192, 192, 192, 0.2);
+  border-bottom-color: rgba(7, 7, 7, 0.2);
 }
 
 .nav-logo {
@@ -119,25 +119,11 @@ ul {
   text-decoration: none;
 }
 
-.logo-img-wrap {
-  width: 36px;
-  height: 36px;
-  border-radius: 6px;
-  overflow: hidden;
-  border: 1px solid rgba(192, 192, 192, 0.3);
-  flex-shrink: 0;
-}
 
 .logo-img-wrap img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-}
-
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.1;
+  object-fit: contain;
 }
 
 .logo-brand {
@@ -151,15 +137,6 @@ ul {
   letter-spacing: 3px;
 }
 
-/* If you want to remove the old tagline, delete the next 8 lines */
-.logo-tagline {
-  font-size: 8px;
-  color: var(--chrome-dark);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
 .nav-links {
   display: flex;
   align-items: center;
@@ -170,7 +147,7 @@ ul {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
   font-size: 14px;
-  color: var(--chrome-mid);
+  color: white;
   letter-spacing: 0.5px;
   position: relative;
   transition: var(--transition);
@@ -215,9 +192,10 @@ ul {
 
 .nav-cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(192, 192, 192, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   filter: brightness(1.1);
 }
+
 /* Hamburger */
 .hamburger {
   display: none;
@@ -1844,7 +1822,7 @@ ul {
 
 /* ============================== FOOTER ============================== */
 .footer {
-  background: #1a1a1a;
+  background: #141313;
   border-top: 1px solid rgba(31, 17, 118, 0.08);
   padding: 64px 5% 32px;
 }
@@ -1853,9 +1831,9 @@ ul {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
   gap: 48px;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding-bottom: 48px;
+  padding-bottom: 30px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
@@ -1863,13 +1841,13 @@ ul {
   font-size: 14px;
   color: var(--chrome-dark);
   line-height: 1.8;
-  margin: 16px 0 24px;
-  max-width: 300px;
+  margin: 10px 0 20px;
+  max-width: 100px;
 }
 
 .footer-social {
   display: flex;
-  gap: 10px;
+  gap: 5px;
 }
 
 .footer-col h4 {
@@ -2116,5 +2094,3 @@ ul {
     grid-template-columns: 1fr;
   }
 }
-
-

@@ -3,15 +3,83 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Our Vehicles | BRO CARS</title>
-  <meta name="description" content="Browse our complete collection of premium pre-owned cars in UK."/>
+  <title>Our Vehicles | BRO CARS Premium Dealership</title>
+  <meta name="description" content="BRO CARS — UK's trusted premium pre-owned car dealership. Buy, sell and trade quality vehicles with full inspection and documentation support."/>
   <style>
-   
   
+
+    /* ============================== PAGE HERO ============================== */
+    .page-hero {
+      position: relative;
+      padding: 180px 5% 100px;
+      background: var(--dark-2);
+      overflow: hidden;
+      border-bottom: var(--border-subtle);
+      text-align: center;
+    }
+
+    .page-hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(rgba(192,192,192,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(192,192,192,0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .page-hero-content {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .breadcrumb {
+      margin-bottom: 20px;
+      font-size: 12px;
+      color: var(--chrome-dark);
+    }
+
+    .breadcrumb a {
+      color: var(--chrome-mid);
+      text-decoration: none;
+    }
+
+    .page-hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .page-hero h1 span {
+      background: var(--gradient-chrome);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .page-hero p {
+      font-size: 18px;
+      color: var(--chrome-mid);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
     /* ============================== CARS SECTION ============================== */
     .cars-section {
       background: var(--dark);
-      padding: 100px 5%;
+      padding: 80px 5%;
+    }
+
+    .section-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      text-align: center;
+    }
+
+    .section-title span {
+      background: var(--gradient-chrome);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
     .cars-grid {
@@ -19,7 +87,7 @@
       grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
       gap: 28px;
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 0 auto 60px;
     }
 
     .car-card {
@@ -65,7 +133,8 @@
       font-size: 72px;
     }
 
-    .car-badge {
+    /* badges container */
+    .car-badge-left {
       position: absolute;
       top: 14px;
       left: 14px;
@@ -79,6 +148,32 @@
       padding: 4px 12px;
       border-radius: 20px;
       box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+
+    .car-badge-right {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 20px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+      z-index: 2;
+    }
+
+    .status-available {
+      background: #10b981;
+      color: #000;
+    }
+
+    .status-sold {
+      background: #ef4444;
+      color: #fff;
     }
 
     .car-info {
@@ -157,7 +252,7 @@
       box-shadow: 0 8px 20px rgba(192, 192, 192, 0.2);
     }
 
-    /* ============================== MODAL ============================== */
+    /* ============================== MODAL GALLERY ============================== */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -183,7 +278,7 @@
       border: var(--border-chrome);
       border-radius: 16px;
       width: 100%;
-      max-width: 750px;
+      max-width: 800px;
       max-height: 90vh;
       overflow-y: auto;
       position: relative;
@@ -195,33 +290,76 @@
       transform: scale(1);
     }
 
-    .modal-img {
-      height: 260px;
-      overflow: hidden;
-      background: var(--dark-3);
-      border-radius: 16px 16px 0 0;
+    /* Gallery */
+    .modal-gallery {
+      padding: 20px 20px 0;
     }
 
-    .modal-img img {
+    .modal-main-img {
+      width: 100%;
+      height: 300px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--dark-3);
+      margin-bottom: 16px;
+    }
+
+    .modal-main-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
 
-    .modal-img-fallback {
+    .modal-thumbnails {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--chrome-mid) var(--dark-3);
+    }
+
+    .modal-thumbnails::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .modal-thumbnails::-webkit-scrollbar-track {
+      background: var(--dark-3);
+    }
+
+    .modal-thumbnails::-webkit-scrollbar-thumb {
+      background: var(--chrome-mid);
+      border-radius: 10px;
+    }
+
+    .thumb-img {
+      width: 80px;
+      height: 60px;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+
+    .thumb-img:hover {
+      border-color: var(--chrome-bright);
+    }
+
+    .thumb-img.active {
+      border-color: #c0c0c0;
+    }
+
+    .thumb-img img {
       width: 100%;
       height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 100px;
-      background: linear-gradient(135deg, var(--dark-3), var(--dark-4));
+      object-fit: cover;
     }
 
     .modal-body {
-      padding: 32px;
+      padding: 20px 32px 32px;
       position: relative;
-      text-align: center;
     }
 
     .modal-close {
@@ -273,7 +411,6 @@
       gap: 12px;
       margin-bottom: 22px;
       text-align: left;
-      justify-content: center;
     }
 
     .modal-spec-item {
@@ -308,9 +445,6 @@
       background: rgba(255, 255, 255, 0.02);
       border-radius: 8px;
       border: 1px solid rgba(255, 255, 255, 0.05);
-      max-width: 90%;
-      margin-left: auto;
-      margin-right: auto;
     }
 
     .modal-btns {
@@ -320,13 +454,38 @@
       justify-content: center;
     }
 
-    
-    /* ============================== ANIMATIONS ============================== */
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .btn {
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 700;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-decoration: none;
+      transition: var(--transition);
+      cursor: pointer;
+      border: none;
     }
 
+    .btn-primary {
+      background: var(--gradient-chrome-btn);
+      color: var(--black);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1px solid var(--chrome-mid);
+      color: var(--chrome-bright);
+    }
+
+    .btn-ghost:hover {
+      background: var(--chrome-mid);
+      color: var(--black);
+    }
+
+
+
+    /* ============================== ANIMATIONS ============================== */
     .animate-up {
       opacity: 0;
       transform: translateY(30px);
@@ -337,27 +496,25 @@
       opacity: 1;
       transform: translateY(0);
     }
-
   </style>
+  <!-- Additional fonts (if needed) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-
-
 
 <!-- ===== FIXED NAVBAR ===== -->
 <nav class="navbar" id="navbar">
   <a href="index.html" class="nav-logo">
     <div class="logo-img-wrap">
-<img src="logo1.png" alt="Bro Cars UK Car Sales Logo" style="height: 150px; width: auto; margin-top: 32%;">
+      <img src="logo1.png" alt="Bro Cars UK Car Sales Logo" style="height: 150px; width: auto; margin-top: 32%;">
     </div>
-
   </a>
   <div class="nav-links">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
     <a href="services.html">Services</a>
-     <a href="vehicles.html">Vehicles</a>
+    <a href="vehicles.html">Vehicles</a>
     <a href="contact.html">Contact</a>
     <a href="contact.html" class="nav-cta">Sell Your Car</a>
   </div>
@@ -388,9 +545,14 @@
   </div>
 </section>
 
-<!-- ===== CARS GRID ===== -->
+<!-- ===== AVAILABLE CARS SECTION ===== -->
 <section class="cars-section">
-  <div class="cars-grid" id="carsGrid"></div>
+  <h2 class="section-title"><span>Available</span> Vehicles</h2>
+  <div class="cars-grid" id="availableCarsGrid"></div>
+<br> <br><br>
+  <!-- ===== SOLD CARS SECTION ===== -->
+  <h2 class="section-title"><span>Sold</span> Vehicles</h2>
+  <div class="cars-grid" id="soldCarsGrid"></div>
 </section>
 
 <!-- ===== FOOTER ===== -->
@@ -403,7 +565,6 @@
           <img src="logo1.png" alt="BRO CARS"/>
         </div>
       </a>
-      
     </div>
 
     <!-- Quick Links -->
@@ -435,7 +596,7 @@
       <h4>Contact Info</h4>
       <div class="footer-contact-item">
         <span>📍</span>
-        <span>No. 45, Galle Road, Dehiwala, Western Province, Sri Lanka</span>
+        <span>12 King Street, Manchester, M2 6AA, United Kingdom.</span>
       </div>
       <div class="footer-contact-item">
         <span>📞</span>
@@ -451,20 +612,28 @@
       </div>
     </div>
   </div>
-
-  
 </footer>
 
-
-<!-- ===== MODAL (for car details) ===== -->
+<!-- ===== MODAL (with gallery) ===== -->
 <div class="modal-overlay" id="carModal">
   <div class="modal-box">
-    <div class="modal-img" id="modalImgWrap"></div>
+    <div class="modal-gallery">
+      <!-- Main image -->
+      <div class="modal-main-img" id="modalMainImg">
+        <img src="" alt="">
+      </div>
+      <!-- Thumbnails scroll -->
+      <div class="modal-thumbnails" id="modalThumbnails"></div>
+    </div>
     <div class="modal-body">
       <button class="modal-close" id="modalClose">✕</button>
       <div class="car-year-tag" id="modalYear"></div>
       <div class="modal-car-name" id="modalName"></div>
       <div class="modal-car-price" id="modalPrice"></div>
+      <!-- Status badge in modal -->
+      <div style="margin-bottom: 16px;">
+        <span id="modalStatus" class="car-badge-right" style="position: static; display: inline-block;"></span>
+      </div>
       <div class="modal-desc" id="modalDesc"></div>
       <div class="modal-specs-grid" id="modalSpecs"></div>
       <div class="modal-btns">
@@ -476,7 +645,7 @@
 </div>
 
 <script>
-  // ==================== CAR DATA ====================
+  // ==================== CAR DATA WITH MULTIPLE IMAGES ====================
   const cars = [
     {
       name: "Toyota Aqua G",
@@ -489,8 +658,15 @@
       color: "Pearl White",
       condition: "Excellent",
       badge: "Hot Deal",
+      status: "Available",
       desc: "Well-maintained single-owner hybrid hatchback with outstanding fuel economy. Full service history available. Perfect for city commuting.",
-      img: "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600&q=75"
+      img: "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600&q=75",
+      images: [
+        "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600&q=75",
+        "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&q=75",
+        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=75",
+        "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&q=75"
+      ]
     },
     {
       name: "Honda Vezel RS",
@@ -503,8 +679,15 @@
       color: "Premium Black Pearl",
       condition: "Excellent",
       badge: "Premium",
+      status: "Sold",
       desc: "Sporty RS trim with full leather seats, push-start ignition, and advanced Honda Sensing safety systems. One of the finest crossovers in its class.",
-      img: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=75"
+      img: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=75",
+      images: [
+        "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=75",
+        "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=75",
+        "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&q=75",
+        "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d1?w=600&q=75"
+      ]
     },
     {
       name: "Suzuki Alto Turbo RS",
@@ -517,8 +700,15 @@
       color: "Racing Red",
       condition: "Like New",
       badge: "New Arrival",
+      status: "Available",
       desc: "Low mileage sporty kei car with turbocharged engine and bucket sports seats. Fun to drive and incredibly fuel efficient for daily use.",
-      img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=75"
+      img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=75",
+      images: [
+        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=75",
+        "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600&q=75",
+        "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&q=75",
+        "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&q=75"
+      ]
     },
     {
       name: "Nissan X-Trail 4WD",
@@ -531,8 +721,15 @@
       color: "Arctic White",
       condition: "Very Good",
       badge: "Popular",
+      status: "Available",
       desc: "7-seater family SUV with full 4WD capability. Equipped with panoramic sunroof, 360-degree camera, and third-row seating for the whole family.",
-      img: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&q=75"
+      img: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&q=75",
+      images: [
+        "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&q=75",
+        "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=75",
+        "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=75",
+        "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d1?w=600&q=75"
+      ]
     },
     {
       name: "Toyota Prius Alpha",
@@ -545,8 +742,15 @@
       color: "Graphite Grey",
       condition: "Good",
       badge: "Best Value",
+      status: "Sold",
       desc: "Spacious 7-seater hybrid wagon with exceptional fuel efficiency. Plenty of cabin space, smart entry system, and comfortable ride for families.",
-      img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=75"
+      img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=75",
+      images: [
+        "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=75",
+        "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&q=75",
+        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=75",
+        "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&q=75"
+      ]
     },
     {
       name: "BMW 3 Series 320i",
@@ -559,8 +763,15 @@
       color: "Mineral Grey Metallic",
       condition: "Good",
       badge: "Luxury",
+      status: "Available",
       desc: "Iconic German sports sedan with precise dynamics and a premium cabin. iDrive infotainment, full leather interior, and the thrill of BMW engineering.",
-      img: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&q=75"
+      img: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&q=75",
+      images: [
+        "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&q=75",
+        "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600&q=75",
+        "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=75",
+        "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&q=75"
+      ]
     },
     {
       name: "Mitsubishi Pajero Sport",
@@ -573,8 +784,15 @@
       color: "White Pearl",
       condition: "Very Good",
       badge: "4x4",
+      status: "Available",
       desc: "Powerful 7-seater SUV with 4x4 capability. Perfect for family adventures and off-road trips. Well maintained with complete service records.",
-      img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&q=75"
+      img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&q=75",
+      images: [
+        "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&q=75",
+        "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&q=75",
+        "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=75",
+        "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d1?w=600&q=75"
+      ]
     },
     {
       name: "Mercedes-Benz C200",
@@ -587,32 +805,41 @@
       color: "Black",
       condition: "Excellent",
       badge: "Executive",
+      status: "Sold",
       desc: "Elegant luxury sedan with AMG line package, panoramic roof, and premium Burmester sound system. A true executive choice.",
-      img: "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d1?w=600&q=75"
+      img: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?w=600&q=75",
+      images: [
+        "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d1?w=600&q=75",
+        "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&q=75",
+        "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600&q=75",
+        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=75"
+      ]
     }
   ];
 
-  // ==================== RENDER FUNCTION ====================
-  function renderCars(containerId, limit = null) {
-    const grid = document.getElementById(containerId);
-    if (!grid) return;
+  // ==================== RENDER FUNCTION (separate grids) ====================
+  function renderCars() {
+    const availableGrid = document.getElementById('availableCarsGrid');
+    const soldGrid = document.getElementById('soldCarsGrid');
 
-    grid.innerHTML = '';
+    if (!availableGrid || !soldGrid) return;
 
-    const carsToShow = limit ? cars.slice(0, limit) : cars;
+    availableGrid.innerHTML = '';
+    soldGrid.innerHTML = '';
 
-    carsToShow.forEach((car, idx) => {
-      // Find global index for modal
-      const globalIndex = cars.findIndex(c => c.name === car.name && c.year === car.year);
-
+    cars.forEach((car, index) => {
       const card = document.createElement('div');
       card.className = 'car-card animate-up';
+
+      const statusClass = car.status === 'Available' ? 'status-available' : 'status-sold';
+
       card.innerHTML = `
         <div class="car-card-img">
           <img src="${car.img}" alt="${car.name}" loading="lazy"
                onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
           <div class="car-card-img-fallback" style="display:none;">🚗</div>
-          <span class="car-badge">${car.badge}</span>
+          <span class="car-badge-left">${car.badge}</span>
+          <span class="car-badge-right ${statusClass}">${car.status}</span>
         </div>
         <div class="car-info">
           <div class="car-year-tag">${car.year} Model</div>
@@ -623,29 +850,59 @@
             <span class="spec-tag">⚙️ ${car.transmission}</span>
             <span class="spec-tag">📏 ${car.mileage}</span>
           </div>
-          <button class="car-card-btn" onclick="openModal(${globalIndex})">View Details</button>
+          <button class="car-card-btn" onclick="openModal(${index})">View Details</button>
         </div>
       `;
-      grid.appendChild(card);
+
+      if (car.status === 'Available') {
+        availableGrid.appendChild(card);
+      } else {
+        soldGrid.appendChild(card);
+      }
     });
   }
 
-  // ==================== MODAL FUNCTIONS ====================
+  // ==================== MODAL FUNCTIONS (with gallery) ====================
+  let currentCarImages = [];
+  let currentMainImg = null;
+
   function openModal(index) {
     const car = cars[index];
     const modal = document.getElementById('carModal');
     if (!modal) return;
 
-    document.getElementById('modalImgWrap').innerHTML = `
-      <img src="${car.img}" alt="${car.name}"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-      <div class="modal-img-fallback" style="display:none;">🚗</div>
-    `;
+    // Store images
+    currentCarImages = car.images || [car.img]; // fallback if no images array
 
+    // Set main image
+    const mainImg = document.querySelector('#modalMainImg img');
+    mainImg.src = currentCarImages[0];
+    mainImg.alt = car.name;
+
+    // Build thumbnails
+    const thumbContainer = document.getElementById('modalThumbnails');
+    thumbContainer.innerHTML = '';
+    currentCarImages.forEach((imgUrl, i) => {
+      const thumb = document.createElement('div');
+      thumb.className = `thumb-img ${i === 0 ? 'active' : ''}`;
+      thumb.innerHTML = `<img src="${imgUrl}" alt="Thumb ${i+1}" onclick="changeMainImage('${imgUrl}', this)">`;
+      thumbContainer.appendChild(thumb);
+    });
+
+    // Set other details
     document.getElementById('modalYear').textContent = car.year + ' Model';
     document.getElementById('modalName').textContent = car.name;
     document.getElementById('modalPrice').textContent = car.price;
     document.getElementById('modalDesc').textContent = car.desc;
+
+    const modalStatus = document.getElementById('modalStatus');
+    modalStatus.textContent = car.status;
+    modalStatus.className = car.status === 'Available' ? 'status-available' : 'status-sold';
+    modalStatus.style.padding = '4px 12px';
+    modalStatus.style.borderRadius = '20px';
+    modalStatus.style.fontWeight = '800';
+    modalStatus.style.fontSize = '10px';
+    modalStatus.style.letterSpacing = '1.5px';
 
     const specsHTML = `
       <div class="modal-spec-item"><div class="modal-spec-label">Fuel Type</div><div class="modal-spec-value">${car.fuel}</div></div>
@@ -661,6 +918,17 @@
     document.body.style.overflow = 'hidden';
   }
 
+  // Function to change main image when thumbnail clicked
+  window.changeMainImage = function(imgUrl, thumbElement) {
+    const mainImg = document.querySelector('#modalMainImg img');
+    mainImg.src = imgUrl;
+
+    // Remove active class from all thumbnails
+    document.querySelectorAll('.thumb-img').forEach(thumb => thumb.classList.remove('active'));
+    // Add active class to clicked thumbnail's parent
+    thumbElement.parentElement.classList.add('active');
+  };
+
   function closeModal() {
     const modal = document.getElementById('carModal');
     if (modal) {
@@ -671,10 +939,8 @@
 
   // ==================== EVENT LISTENERS ====================
   document.addEventListener('DOMContentLoaded', function() {
-    // Render all cars on this page (vehicles.html)
-    renderCars('carsGrid'); // no limit → show all
+    renderCars();
 
-    // Navbar scroll effect
     const navbar = document.querySelector('.navbar');
     if (navbar) {
       window.addEventListener('scroll', () => {
@@ -682,7 +948,6 @@
       });
     }
 
-    // Hamburger menu
     const hamburger = document.getElementById('hamburger');
     const mobileNav = document.getElementById('mobileNav');
     if (hamburger && mobileNav) {
@@ -692,7 +957,6 @@
       });
     }
 
-    // Modal close buttons
     const modalClose = document.getElementById('modalClose');
     const modalCloseBtn = document.getElementById('modalCloseBtn');
     const modalOverlay = document.getElementById('carModal');
@@ -715,5 +979,4 @@
   });
 </script>
 </body>
-
 </html>

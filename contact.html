@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact- BRO CARS Premium Dealership</title>
+  <title>Contact - BRO CARS Premium Dealership</title>
   <meta name="description" content="BRO CARS — UK's trusted premium pre-owned car dealership. Buy, sell and trade quality vehicles with full inspection and documentation support."/>
   <link rel="stylesheet" href="style.css"/>
 </head>
@@ -13,9 +13,8 @@
 <nav class="navbar" id="navbar">
   <a href="index.html" class="nav-logo">
     <div class="logo-img-wrap">
-<img src="logo1.png" alt="Bro Cars UK Car Sales Logo" style="height: 150px; width: auto; margin-top: 32%;">
+      <img src="logo1.png" alt="Bro Cars UK Car Sales Logo" style="height: 150px; width: auto; margin-top: 32%;">
     </div>
-
   </a>
   <div class="nav-links">
     <a href="index.html">Home</a>
@@ -23,7 +22,6 @@
     <a href="services.html">Services</a>
     <a href="vehicles.html">Vehicles</a>
     <a href="contact.html">Contact</a>
-    <a href="contact.html" class="nav-cta">Sell Your Car</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu">
     <span></span><span></span><span></span>
@@ -37,7 +35,6 @@
   <a href="services.html">Services</a>
   <a href="vehicles.html">Vehicles</a>
   <a href="contact.html">Contact</a>
-  <a href="contact.html" class="nav-cta">Sell Your Car</a>
 </div>
 
 <!-- PAGE HERO -->
@@ -50,11 +47,11 @@
   </div>
 </section>
 
-<!-- CONTACT SECTION -->
+<!-- CONTACT SECTION (with image gallery instead of form) -->
 <section class="contact-section">
   <div class="contact-grid">
 
-    <!-- Info -->
+    <!-- Left: Contact Info (unchanged) -->
     <div class="contact-info animate-up">
       <span class="section-label">Reach Us</span>
       <h2 style="margin-top:14px">Let's <span>Talk Cars</span></h2>
@@ -102,62 +99,19 @@
       </div>
     </div>
 
-    <!-- Form -->
-    <div class="contact-form-wrap animate-up">
-      <h3 class="form-title">Send Us a Message</h3>
-      <form id="contactForm" novalidate>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="fname">First Name</label>
-            <input class="form-input" type="text" id="fname" placeholder="e.g. Kasun"/>
-            <div class="form-error" id="fnameError">Please enter your first name.</div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="lname">Last Name</label>
-            <input class="form-input" type="text" id="lname" placeholder="e.g. Perera"/>
-            <div class="form-error" id="lnameError">Please enter your last name.</div>
-          </div>
-        </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label class="form-label" for="email">Email Address</label>
-            <input class="form-input" type="email" id="email" placeholder="your@email.com"/>
-            <div class="form-error" id="emailError">Please enter a valid email address.</div>
-          </div>
-          <div class="form-group">
-            <label class="form-label" for="phone">Phone Number</label>
-            <input class="form-input" type="tel" id="phone" placeholder="+94 77 000 0000"/>
-            <div class="form-error" id="phoneError">Please enter a valid phone number.</div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="subject">Enquiry Type</label>
-          <select class="form-select" id="subject">
-            <option value="">Select enquiry type...</option>
-            <option value="buy">I want to Buy a Car</option>
-            <option value="sell">I want to Sell My Car</option>
-            <option value="inspection">Car Inspection Request</option>
-            <option value="documentation">Documentation Support</option>
-            <option value="general">General Enquiry</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="message">Your Message</label>
-          <textarea class="form-textarea" id="message" placeholder="Tell us more about your requirements — e.g. the car model you're looking for, your budget, or details about the car you want to sell..."></textarea>
-          <div class="form-error" id="messageError">Please enter your message.</div>
-        </div>
-        <button type="submit" class="form-submit">Send Message</button>
-        <div class="form-success" id="formSuccess">
-          <h4>✅ Message Sent Successfully!</h4>
-          <p>Thank you for reaching out. A BRO CARS representative will contact you within 24 hours.</p>
-        </div>
-      </form>
-    </div>
-
+    <!-- Right: Image Gallery (replaces the form) -->
+<div class="contact-form-wrap animate-up" style="padding: 30px;">
+  <h3 class="form-title" style="margin-bottom: 20px;">📸 Our Showroom</h3>
+  <div style="background: #1e1e1e; border-radius: 12px; overflow: hidden; aspect-ratio: 16/9; max-width: 100%;">
+    <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" alt="BMW M4" style="width:100%; height:100%; object-fit: cover; display: block;">
   </div>
+  <p style="color: var(--chrome-dark); margin-top: 20px; text-align: center; font-size: 14px;">Visit our <a href="vehicles.html" style="color: var(--chrome-bright);">Vehicles page</a> for the full inventory.</p>
+</div>
+</div>
 </section>
 
-<!-- MAP SECTION with Google Map -->
+
+<!-- MAP SECTION with Google Map (unchanged) -->
 <section class="map-section">
   <div class="map-container">
     <iframe 
@@ -172,7 +126,7 @@
   </div>
 </section>
 
-<!-- QUICK CONTACT CARDS -->
+<!-- QUICK CONTACT CARDS (unchanged) -->
 <section class="quick-contact">
   <div class="section-header">
     <span class="section-label">Quick Connect</span>
@@ -201,7 +155,7 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- FOOTER (unchanged) -->
 <footer class="footer">
   <div class="footer-grid">
     <!-- Brand Column -->
@@ -211,7 +165,6 @@
           <img src="logo1.png" alt="BRO CARS"/>
         </div>
       </a>
-      
     </div>
 
     <!-- Quick Links -->
@@ -259,57 +212,17 @@
       </div>
     </div>
   </div>
-
-  
 </footer>
 
 <script>
-// Navbar
+// Navbar scroll & mobile menu (unchanged)
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
 const ham = document.getElementById('hamburger');
 const mobileNav = document.getElementById('mobileNav');
 ham.addEventListener('click', () => { ham.classList.toggle('open'); mobileNav.classList.toggle('open'); });
 
-// Form Validation
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  let valid = true;
-  const fields = [
-    { id: 'fname',   errId: 'fnameError',   check: v => v.trim().length >= 2 },
-    { id: 'lname',   errId: 'lnameError',   check: v => v.trim().length >= 2 },
-    { id: 'email',   errId: 'emailError',   check: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v) },
-    { id: 'phone',   errId: 'phoneError',   check: v => v.trim().length >= 9 },
-    { id: 'message', errId: 'messageError', check: v => v.trim().length >= 10 },
-  ];
-  fields.forEach(f => {
-    const el  = document.getElementById(f.id);
-    const err = document.getElementById(f.errId);
-    if (!f.check(el.value)) {
-      el.classList.add('error');
-      err.classList.add('show');
-      valid = false;
-    } else {
-      el.classList.remove('error');
-      err.classList.remove('show');
-    }
-  });
-  if (valid) {
-    document.getElementById('formSuccess').classList.add('show');
-    this.reset();
-    setTimeout(() => document.getElementById('formSuccess').classList.remove('show'), 6000);
-  }
-});
-
-document.querySelectorAll('.form-input,.form-textarea').forEach(inp => {
-  inp.addEventListener('input', () => {
-    inp.classList.remove('error');
-    const err = document.getElementById(inp.id + 'Error');
-    if (err) err.classList.remove('show');
-  });
-});
-
-// Scroll animations
+// Scroll animations (unchanged)
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 100); });
 }, { threshold: 0.1 });
@@ -317,6 +230,3 @@ document.querySelectorAll('.animate-up').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
-
-
-

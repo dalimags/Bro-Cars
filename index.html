@@ -23,7 +23,6 @@
     <a href="services.html">Services</a>
     <a href="vehicles.html">Vehicles</a>
     <a href="contact.html">Contact</a>
-    <a href="contact.html" class="nav-cta">Sell Your Car</a>
   </div>
   <button class="hamburger" id="hamburger" aria-label="Toggle menu">
     <span></span><span></span><span></span>
@@ -37,7 +36,6 @@
   <a href="services.html">Services</a>
   <a href="vehicles.html">Vehicles</a>
   <a href="contact.html">Contact</a>
-  <a href="contact.html" class="nav-cta">Sell Your Car</a>
 </div>
 
 <!-- ===== HERO SECTION ===== -->
@@ -54,16 +52,15 @@
       BRO CARS offers an unmatched showroom collection of certified, inspected pre-owned vehicles — competitively priced and ready to roll. Your perfect car is waiting.
     </p>
     <div class="hero-btns">
-      <a href="#cars" class="btn btn-primary">Browse Cars</a>
-      <a href="contact.html" class="btn btn-outline">Sell Your Car</a>
-    </div>
+      <a href="vehicles.html" class="btn btn-primary">Browse Cars</a>
+   </div>
     <div class="hero-stats">
       <div class="stat-item">
         <div class="stat-num">500<span>+</span></div>
         <div class="stat-label">Cars Sold</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num">10<span>+</span></div>
+        <div class="stat-num">1<span>+</span></div>
         <div class="stat-label">Years Experience</div>
       </div>
       <div class="stat-item">
@@ -235,7 +232,7 @@ const cars = [
   {
     name: "Toyota Aqua G",
     year: 2020,
-    price: "Rs. 6,500,000",
+    price: "$20,912",
     fuel: "Hybrid",
     transmission: "CVT Auto",
     mileage: "42,000 km",
@@ -249,7 +246,7 @@ const cars = [
   {
     name: "Honda Vezel RS",
     year: 2019,
-    price: "Rs. 9,200,000",
+    price: "$20 ",
     fuel: "Hybrid",
     transmission: "7-Speed DCT",
     mileage: "55,000 km",
@@ -263,7 +260,7 @@ const cars = [
   {
     name: "Suzuki Alto Turbo RS",
     year: 2021,
-    price: "Rs. 4,100,000",
+    price: "$15",
     fuel: "Petrol Turbo",
     transmission: "5-Speed Manual",
     mileage: "18,000 km",
@@ -274,48 +271,6 @@ const cars = [
     desc: "Low mileage sporty kei car with turbocharged engine and bucket sports seats. Fun to drive and incredibly fuel efficient for daily use.",
     img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=75"
   },
-  {
-    name: "Nissan X-Trail 4WD",
-    year: 2018,
-    price: "Rs. 12,500,000",
-    fuel: "Petrol",
-    transmission: "CVT Auto",
-    mileage: "78,000 km",
-    engine: "2.0L MR20",
-    color: "Arctic White",
-    condition: "Very Good",
-    badge: "Popular",
-    desc: "7-seater family SUV with full 4WD capability. Equipped with panoramic sunroof, 360-degree camera, and third-row seating for the whole family.",
-    img: "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=600&q=75"
-  },
-  {
-    name: "Toyota Prius Alpha",
-    year: 2017,
-    price: "Rs. 8,800,000",
-    fuel: "Hybrid",
-    transmission: "CVT Auto",
-    mileage: "88,000 km",
-    engine: "1.8L Hybrid",
-    color: "Graphite Grey",
-    condition: "Good",
-    badge: "Best Value",
-    desc: "Spacious 7-seater hybrid wagon with exceptional fuel efficiency. Plenty of cabin space, smart entry system, and comfortable ride for families.",
-    img: "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=600&q=75"
-  },
-  {
-    name: "BMW 3 Series 320i",
-    year: 2016,
-    price: "Rs. 16,900,000",
-    fuel: "Petrol",
-    transmission: "8-Speed Auto",
-    mileage: "95,000 km",
-    engine: "2.0L TwinPower Turbo",
-    color: "Mineral Grey Metallic",
-    condition: "Good",
-    badge: "Luxury",
-    desc: "Iconic German sports sedan with precise dynamics and a premium cabin. iDrive infotainment, full leather interior, and the thrill of BMW engineering.",
-    img: "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=600&q=75"
-  }
 ];
 
 // Render car cards
@@ -422,5 +377,4 @@ document.querySelectorAll('.animate-up').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
-
 

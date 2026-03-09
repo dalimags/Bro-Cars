@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>BRO CARS — Drive Your Dream | Premium Car Dealership </title>
+  <title>BRO CARS — Drive Your Dream | Premium Car Dealership</title>
   <meta name="description" content="BRO CARS — UK's trusted premium pre-owned car dealership. Buy, sell and trade quality vehicles with full inspection and documentation support."/>
-  <link rel="stylesheet" href="style.css"/>
+ 
+   <link rel="stylesheet" href="style.css"/>
+
 </head>
 <body>
 
@@ -13,9 +15,8 @@
 <nav class="navbar" id="navbar">
   <a href="index.html" class="nav-logo">
     <div class="logo-img-wrap">
-<img src="logo1.png" alt="Bro Cars UK Car Sales Logo" style="height: 150px; width: auto; margin-top: 32%;">
+      <img src="logo1.png" alt="Bro Cars UK Car Sales Logo" style="height: 150px; width: auto; margin-top: 32%;">
     </div>
-
   </a>
   <div class="nav-links">
     <a href="index.html">Home</a>
@@ -71,7 +72,7 @@
   </div>
   <div class="hero-car-visual">
     <img
-      src="https://images.unsplash.com/photo-1617788138017-80ad40651399?w=1200&q=80"
+      src="C:\Users\HP\Desktop\Bro cars\WhatsApp Image 2026-03-05 at 9.53.08 AM.jpeg"
       alt="Premium Car Showroom"
       onerror="this.style.display='none'"/>
     <div class="hero-glow"></div>
@@ -86,7 +87,50 @@
     <div class="divider"></div>
     <p class="section-desc">Handpicked vehicles — fully inspected, transparently priced and ready to drive away.</p>
   </div>
-  <div class="cars-grid" id="carsGrid"></div>
+  <div class="cars-grid" id="carsGrid">
+    <!-- Toyota Aqua -->
+    <div class="car-card animate-up">
+      <div class="car-card-img">
+        <img src="C:\Users\HP\Desktop\Bro cars\WhatsApp Image 2026-03-05 at 9.53.08 AM.jpeg" alt="Toyota Aqua G" loading="lazy">
+        <span class="car-badge">Hot Deal</span>
+      </div>
+      <div class="car-info">
+        <div class="car-year-tag">2020 Model</div>
+        <div class="car-name">Toyota Aqua G</div>
+        <div class="car-price">$20,912</div>
+        
+        <a href="vehicles.html" class="car-card-btn">View Details</a>
+      </div>
+    </div>
+    <!-- Honda Vezel RS -->
+    <div class="car-card animate-up">
+      <div class="car-card-img">
+        <img src="https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=75" alt="Honda Vezel RS" loading="lazy">
+        <span class="car-badge">Premium</span>
+      </div>
+      <div class="car-info">
+        <div class="car-year-tag">2019 Model</div>
+        <div class="car-name">Honda Vezel RS</div>
+        <div class="car-price">$20</div>
+        
+        <a href="vehicles.html" class="car-card-btn">View Details</a>
+      </div>
+    </div>
+    <!-- Suzuki Alto Turbo RS -->
+    <div class="car-card animate-up">
+      <div class="car-card-img">
+        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=75" alt="Suzuki Alto Turbo RS" loading="lazy">
+        <span class="car-badge">New Arrival</span>
+      </div>
+      <div class="car-info">
+        <div class="car-year-tag">2021 Model</div>
+        <div class="car-name">Suzuki Alto Turbo RS</div>
+        <div class="car-price">$15</div>
+       
+        <a href="vehicles.html" class="car-card-btn">View Details</a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ===== WHY CHOOSE US ===== -->
@@ -154,9 +198,7 @@
         <div class="logo-img-wrap">
           <img src="logo1.png" alt="BRO CARS"/>
         </div>
-        
       </a>
-      
     </div>
 
     <!-- Quick Links -->
@@ -204,177 +246,35 @@
       </div>
     </div>
   </div>
-  
 </footer>
 
-<!-- ===== MODAL (for car details) ===== -->
-<div class="modal-overlay" id="carModal">
-  <div class="modal-box">
-    <div class="modal-img" id="modalImgWrap"></div>
-    <div class="modal-body">
-      <button class="modal-close" id="modalClose">✕</button>
-      <div class="car-year-tag" id="modalYear"></div>
-      <div class="modal-car-name" id="modalName"></div>
-      <div class="modal-car-price" id="modalPrice"></div>
-      <div class="modal-desc" id="modalDesc"></div>
-      <div class="modal-specs-grid" id="modalSpecs"></div>
-      <div class="modal-btns">
-        <a href="contact.html" class="btn btn-primary">Inquire Now</a>
-        <button class="btn btn-ghost" id="modalCloseBtn">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
+<!-- Minimal JavaScript only for mobile menu & scroll animations (no modal/car generation) -->
 <script>
-  // Car data
-const cars = [
-  {
-    name: "Toyota Aqua G",
-    year: 2020,
-    price: "$20,912",
-    fuel: "Hybrid",
-    transmission: "CVT Auto",
-    mileage: "42,000 km",
-    engine: "1.5L Hybrid",
-    color: "Pearl White",
-    condition: "Excellent",
-    badge: "Hot Deal",
-    desc: "Well-maintained single-owner hybrid hatchback with outstanding fuel economy. Full service history available. Perfect for city commuting.",
-    img: "https://images.unsplash.com/photo-1550355291-bbee04a92027?w=600&q=75"
-  },
-  {
-    name: "Honda Vezel RS",
-    year: 2019,
-    price: "$20 ",
-    fuel: "Hybrid",
-    transmission: "7-Speed DCT",
-    mileage: "55,000 km",
-    engine: "1.5L i-VTEC",
-    color: "Premium Black Pearl",
-    condition: "Excellent",
-    badge: "Premium",
-    desc: "Sporty RS trim with full leather seats, push-start ignition, and advanced Honda Sensing safety systems. One of the finest crossovers in its class.",
-    img: "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=600&q=75"
-  },
-  {
-    name: "Suzuki Alto Turbo RS",
-    year: 2021,
-    price: "$15",
-    fuel: "Petrol Turbo",
-    transmission: "5-Speed Manual",
-    mileage: "18,000 km",
-    engine: "660cc Turbo",
-    color: "Racing Red",
-    condition: "Like New",
-    badge: "New Arrival",
-    desc: "Low mileage sporty kei car with turbocharged engine and bucket sports seats. Fun to drive and incredibly fuel efficient for daily use.",
-    img: "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=600&q=75"
-  },
-];
+  (function() {
+    // Navbar scroll effect
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+      window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 50));
+    }
 
-// Render car cards
-const grid = document.getElementById('carsGrid');
-cars.forEach((car, idx) => {
-  const card = document.createElement('div');
-  card.className = 'car-card animate-up';
-  card.innerHTML = `
-    <div class="car-card-img">
-      <img src="${car.img}" alt="${car.name}" loading="lazy"
-           onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-      <div class="car-card-img-fallback" style="display:none;">🚗</div>
-      <span class="car-badge">${car.badge}</span>
-    </div>
-    <div class="car-info">
-      <div class="car-year-tag">${car.year} Model</div>
-      <div class="car-name">${car.name}</div>
-      <div class="car-price">${car.price}</div>
-      <div class="car-specs">
-        <span class="spec-tag">⛽ ${car.fuel}</span>
-        <span class="spec-tag">⚙️ ${car.transmission}</span>
-        <span class="spec-tag">📏 ${car.mileage}</span>
-      </div>
-      <button class="car-card-btn" onclick="openModal(${idx})">View Details</button>
-    </div>
-  `;
-  grid.appendChild(card);
-});
+    // Mobile menu toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileNav = document.getElementById('mobileNav');
+    if (hamburger && mobileNav) {
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('open');
+        mobileNav.classList.toggle('open');
+      });
+    }
 
-// Modal functions
-function openModal(idx) {
-  const car = cars[idx];
-  const modal = document.getElementById('carModal');
-  if (!modal) return;
-
-  // Set image
-  const modalImgWrap = document.getElementById('modalImgWrap');
-  modalImgWrap.innerHTML = `
-    <img src="${car.img}" alt="${car.name}"
-         onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-    <div class="modal-img-fallback" style="display:none;">🚗</div>
-  `;
-
-  // Fill details
-  document.getElementById('modalYear').textContent = car.year + ' Model';
-  document.getElementById('modalName').textContent = car.name;
-  document.getElementById('modalPrice').textContent = car.price;
-  document.getElementById('modalDesc').textContent = car.desc;
-
-  // Fill specs
-  const specsHTML = `
-    <div class="modal-spec-item"><div class="modal-spec-label">Fuel Type</div><div class="modal-spec-value">${car.fuel}</div></div>
-    <div class="modal-spec-item"><div class="modal-spec-label">Transmission</div><div class="modal-spec-value">${car.transmission}</div></div>
-    <div class="modal-spec-item"><div class="modal-spec-label">Mileage</div><div class="modal-spec-value">${car.mileage}</div></div>
-    <div class="modal-spec-item"><div class="modal-spec-label">Engine</div><div class="modal-spec-value">${car.engine}</div></div>
-    <div class="modal-spec-item"><div class="modal-spec-label">Colour</div><div class="modal-spec-value">${car.color}</div></div>
-    <div class="modal-spec-item"><div class="modal-spec-label">Condition</div><div class="modal-spec-value">${car.condition}</div></div>
-  `;
-  document.getElementById('modalSpecs').innerHTML = specsHTML;
-
-  // Show modal
-  modal.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-  const modal = document.getElementById('carModal');
-  if (modal) {
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-  }
-}
-
-// Event listeners for modal close
-document.getElementById('modalClose').addEventListener('click', closeModal);
-document.getElementById('modalCloseBtn').addEventListener('click', closeModal);
-document.getElementById('carModal').addEventListener('click', function(e) {
-  if (e.target === this) closeModal();
-});
-
-// Navbar scroll effect
-window.addEventListener('scroll', function() {
-  const navbar = document.querySelector('.navbar');
-  if (window.scrollY > 50) {
-    navbar.classList.add('scrolled');
-  } else {
-    navbar.classList.remove('scrolled');
-  }
-});
-
-// Hamburger menu
-document.getElementById('hamburger').addEventListener('click', function() {
-  this.classList.toggle('open');
-  document.getElementById('mobileNav').classList.toggle('open');
-});
-
-// Scroll animations
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((e, i) => {
-    if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.animate-up').forEach(el => observer.observe(el));
+    // Scroll animations (Intersection Observer)
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80);
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.animate-up').forEach(el => observer.observe(el));
+  })();
 </script>
 </body>
 </html>
-
